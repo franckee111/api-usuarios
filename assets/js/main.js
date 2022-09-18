@@ -6,7 +6,7 @@ const alumnos = "Main/alumnos";
 const url = `http://ucamp.alumnos.dev4humans.com.mx/${alumnos}`;
 
 function cargarUsuario(base_url_api){ 
-    console.log(url);
+    // console.log(url);
 
     fetch(url, {method: "GET"})
         .then( (response) => response.json())
@@ -33,13 +33,13 @@ function cargarUsuario(base_url_api){
 function agregarUsuario(){
     console.log("Entró a la función agregarUsuario");
 
-    let form_data = new formData();
+    let form_data = new FormData();
     form_data.append("nombre", document.getElementById("nombre").value);
     form_data.append("paterno", document.getElementById("paterno").value);
     form_data.append("materno", document.getElementById("materno").value);
     form_data.append("email", document.getElementById("email").value);
 
-    console.log(form_data);
+    // console.log(form_data);
     
     fetch(url, 
             {
@@ -61,5 +61,32 @@ function limpiarFormulario(){
     document.getElementById("materno").value = "";
     document.getElementById("email").value = "";
 }
+
+function toggleButton(){
+    console.log("Entró validaFormulario()");
+    const btnAgregar = document.getElementById('btnAgregar');
+    const varValida = 1;
+
+    // btnAgregar.enable = true;
+    
+
+    if(varValida != 0){
+        btnAgregar.disabled = false;
+    } else{
+        btnAgregar.disabled = true; 
+    }
+    
+    // if( document.getElementById("nombre").value != ""){
+    //     btnAgregar.enable = true;
+    // } else{
+    //     btnAgregar.enable = false;
+    // }
+    // document.getElementById("nombre").value ? "" : (document.getElementById("btnAgregar").Disabled = true);
+}
+
+// function keyPress(){
+//     console.log(document.getElementById('nombre').addEventListener("keypress"));
+//     // document.getElementById('nombre').addEventListener("keypress")
+// }
 
 cargarUsuario();

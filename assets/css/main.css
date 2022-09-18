@@ -25,3 +25,9 @@ footer {
   background-color: rgba(0, 0, 0, .85);
   color: white;
 }
+
+::placeholder {
+  color: rgb(0, 150, 57);
+  font-size: 1em;
+  font-style: italic;
+}
