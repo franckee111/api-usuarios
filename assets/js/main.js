@@ -34,10 +34,10 @@ function agregarUsuario(){
     console.log("Entró a la función agregarUsuario");
 
     let form_data = new FormData();
-    form_data.append("nombre", document.getElementById("nombre").value);
-    form_data.append("paterno", document.getElementById("paterno").value);
-    form_data.append("materno", document.getElementById("materno").value);
-    form_data.append("email", document.getElementById("email").value);
+    form_data.append("nombre", document.getElementById('nombre').value);
+    form_data.append("paterno", document.getElementById('paterno').value);
+    form_data.append("materno", document.getElementById('materno').value);
+    form_data.append("email", document.getElementById('email').value);
 
     // console.log(form_data);
     
@@ -56,37 +56,36 @@ function agregarUsuario(){
 }
 
 function limpiarFormulario(){
-    document.getElementById("nombre").value = "";
-    document.getElementById("paterno").value = "";
-    document.getElementById("materno").value = "";
-    document.getElementById("email").value = "";
+    document.getElementById('nombre').value = "";
+    document.getElementById('paterno').value = "";
+    document.getElementById('materno').value = "";
+    document.getElementById('email').value = "";
+    document.getElementById('btnAgregar').disabled = true;
 }
 
-function toggleButton(){
+function deshabilitarBoton(){
     console.log("Entró validaFormulario()");
+    // Inicializamos la variable para deshabilitar botón Agregar
+    varValida=0
+
     const btnAgregar = document.getElementById('btnAgregar');
-    const varValida = 1;
+    const varNombre = document.getElementById('nombre').value;
+    const varPaterno = document.getElementById('paterno').value;
+    const varMaterno = document.getElementById('materno').value;
+    const varEmail = document.getElementById('email').value;
 
-    // btnAgregar.enable = true;
-    
 
-    if(varValida != 0){
-        btnAgregar.disabled = false;
+    if ( (varNombre == "") || (varPaterno == "") || (varMaterno == "") || (varEmail == "") ){
+        varValida = 0;
     } else{
-        btnAgregar.disabled = true; 
-    }
-    
-    // if( document.getElementById("nombre").value != ""){
-    //     btnAgregar.enable = true;
-    // } else{
-    //     btnAgregar.enable = false;
-    // }
-    // document.getElementById("nombre").value ? "" : (document.getElementById("btnAgregar").Disabled = true);
-}
+        varValida = 1; 
+    }    
 
-// function keyPress(){
-//     console.log(document.getElementById('nombre').addEventListener("keypress"));
-//     // document.getElementById('nombre').addEventListener("keypress")
-// }
+    if(varValida == 0){
+        btnAgregar.disabled = true;
+    } else{
+        btnAgregar.disabled = false; 
+    }
+}
 
 cargarUsuario();
